@@ -131,6 +131,7 @@ body {
     font-weight: 600;
 }
 
+/* Inputs & Textareas */
 .form-control {
     width: 100%;
     padding: 10px;
@@ -142,6 +143,26 @@ body {
 .form-control:focus {
     border-color: #3498db;
     outline: none;
+}
+
+/* Specific styling for plain textareas */
+textarea.form-control {
+    width: 100% !important;
+    min-height: 250px;
+    padding: 12px;
+    font-size: 1rem;
+    line-height: 1.5;
+    resize: vertical;
+}
+
+/* Fix for EasyMDE Editor wrapper container */
+.EasyMDEContainer {
+    width: 100% !important;
+}
+
+.EasyMDEContainer .CodeMirror {
+    min-height: 250px;
+    border-radius: 4px;
 }
 
 /* Hero Section */

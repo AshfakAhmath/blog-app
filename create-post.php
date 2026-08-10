@@ -58,7 +58,7 @@ include('header.php');
 
         <div class="form-group">
             <label for="content">Content (Markdown Format)</label>
-            <textarea id="markdown-editor" name="content"></textarea>
+            <textarea id="markdown-editor" name="content" class="form-control"></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary">Publish Post</button>

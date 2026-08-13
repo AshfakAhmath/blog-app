@@ -27,7 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $success = "You are now registered! Redirecting to login...";
             
-            // Redirect to login page after 2 seconds
             header("refresh:2;url=login.php");
         } catch (mysqli_sql_exception $e) {
             $error = "Username or Email is already taken.";

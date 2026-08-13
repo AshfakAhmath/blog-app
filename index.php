@@ -2,7 +2,6 @@
 include('header.php');
 include('db.php');
 
-// Fetch all posts ordered by creation date (newest first) with author's username
 $sql = "SELECT blogPost.*, user.username 
         FROM blogPost 
         JOIN user ON blogPost.user_id = user.id 

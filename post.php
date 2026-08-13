@@ -14,7 +14,6 @@ if (!$post_id) {
     exit();
 }
 
-// Fetch the specific post along with the author's username
 $sql = "SELECT blogPost.*, user.username 
         FROM blogPost 
         JOIN user ON blogPost.user_id = user.id 
@@ -32,7 +31,6 @@ if (!$post) {
     exit();
 }
 
-// Convert Markdown to HTML using Parsedown
 $parsedown = new Parsedown();
 $htmlContent = $parsedown->text($post['content']);
 ?>
@@ -44,7 +42,6 @@ $htmlContent = $parsedown->text($post['content']);
         on <?= date('F j, Y', strtotime($post['created_at'])); ?>
     </p>
 
-    <!-- Show Edit / Delete options only if logged-in user is the author -->
     <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $post['user_id']): ?>
         <div style="margin-bottom: 20px;">
             <a href="edit-post.php?id=<?= $post['id']; ?>" class="btn btn-outline" style="margin-right: 10px;">Edit Post</a>
@@ -55,7 +52,6 @@ $htmlContent = $parsedown->text($post['content']);
         </div>
     <?php endif; ?>
 
-    <!-- Render Parsedown HTML content -->
     <div class="blog-content" style="line-height: 1.7;">
         <?= $htmlContent; ?>
     </div>

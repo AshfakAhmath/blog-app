@@ -1,18 +1,15 @@
 <?php
-// 1. Session start guard
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
 include("db.php");
 
-// 2. Auth Guard: Redirect if not logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
-// 3. Validate post ID parameter from URL
 $post_id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
 if (!$post_id) {
@@ -20,7 +17,6 @@ if (!$post_id) {
     exit();
 }
 
-// 4. Fetch post record
 $sql = "SELECT * FROM blogPost WHERE id = ?";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "i", $post_id);
@@ -33,7 +29,6 @@ if (!$post) {
     exit();
 }
 
-// 5. Ownership Authorization Guard (using != for type compatibility)
 if ($_SESSION['user_id'] != $post['user_id']) {
     include('header.php');
     echo "<div class='card' style='margin-top: 20px;'><div class='alert alert-danger'><strong>Unauthorized Action:</strong> You do not have permission to edit this post.</div></div>";
@@ -43,7 +38,6 @@ if ($_SESSION['user_id'] != $post['user_id']) {
 
 $error = "";
 
-// 6. Handle Form Submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title   = filter_input(INPUT_POST, "title", FILTER_SANITIZE_SPECIAL_CHARS);
     $content = trim($_POST['content']);
@@ -67,7 +61,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 include('header.php');
 ?>
 
-<!-- Include EasyMDE Markdown Editor CSS & JS CDN -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/easy-markdown-editor/2.16.1/easymde.min.css">
 <script src="https://cdn.jsdelivr.net/easy-markdown-editor/2.16.1/easymde.min.js"></script>
 

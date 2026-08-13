@@ -2,7 +2,6 @@
 session_start();
 include("db.php");
 
-// Authorization Check: Only logged-in users can access this page
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
@@ -12,7 +11,6 @@ $error = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title   = filter_input(INPUT_POST, "title", FILTER_SANITIZE_SPECIAL_CHARS);
-    // Note: Do not sanitize content with SPECIAL_CHARS if you want to allow raw Markdown text!
     $content = trim($_POST['content']);
 
     if (empty($title) || empty($content)) {
@@ -27,7 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             mysqli_stmt_bind_param($stmt, "iss", $user_id, $title, $content);
             mysqli_stmt_execute($stmt);
 
-            // Redirect to home page after publishing
             header("Location: index.php");
             exit();
         } catch (mysqli_sql_exception $e) {
@@ -39,7 +36,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 include('header.php');
 ?>
 
-<!-- Include EasyMDE Markdown Editor CSS & JS CDN -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/easy-markdown-editor/2.16.1/easymde.min.css">
 <script src="https://cdn.jsdelivr.net/easy-markdown-editor/2.16.1/easymde.min.js"></script>
 
@@ -67,7 +63,6 @@ include('header.php');
 </div>
 
 <script>
-    // Initialize EasyMDE Markdown Editor on the textarea
     const easyMDE = new EasyMDE({ 
         element: document.getElementById('markdown-editor'),
         placeholder: "Write your post using Markdown formatting...",

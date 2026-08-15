@@ -4,7 +4,7 @@ A full-stack blog application built with PHP, MySQL, Vanilla CSS, and Parsedown.
 
 ## 🚀 Live Demo
 Check out the live deployed application here:
-👉 **[http://blogapp.lovestoblog.com](https://blogapp.lovestoblog.com/)**
+👉 **[https://ashfakahmath.alwaysdata.net](https://ashfakahmath.alwaysdata.net)**
 
 ## 🛠️ Features
 - **User Authentication:** Registration, Login, and Session-based Auth with hashed passwords (`password_hash`).

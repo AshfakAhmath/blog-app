@@ -25,13 +25,19 @@ mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 $post = mysqli_fetch_assoc($result);
 
+// 1. Updated Error Card handling
 if (!$post) {
-    echo "<div class='alert alert-danger' style='margin-top: 20px;'>Post not found.</div>";
+    echo "<div class='card' style='margin-top: 20px;'>";
+    echo "  <div class='alert alert-danger'>The requested blog post does not exist or has been removed.</div>";
+    echo "  <a href='index.php' class='btn btn-outline'>&larr; Return to Home</a>";
+    echo "</div>";
     include('footer.php');
     exit();
 }
 
+// 2. SafeMode enabled for Parsedown
 $parsedown = new Parsedown();
+$parsedown->setSafeMode(true);
 $htmlContent = $parsedown->text($post['content']);
 ?>
 

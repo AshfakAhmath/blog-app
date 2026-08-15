@@ -2,7 +2,7 @@
 include('header.php');
 include('db.php');
 
-$sql = "SELECT blogPost.*, user.username 
+$sql = "SELECT blogpost.*, user.username 
         FROM blogPost 
         JOIN user ON blogPost.user_id = user.id 
         ORDER BY blogPost.created_at DESC";
@@ -13,7 +13,7 @@ $result = mysqli_query($conn, $sql);
 <div class="hero">
     <h1>Welcome to DevBlog</h1>
     <p>A simple, custom blog platform to share thoughts and developer logs.</p>
-    
+
     <?php if (isset($_SESSION['user_id'])): ?>
         <a class="btn btn-primary" href="create-post.php">Write a New Blog Post</a>
     <?php else: ?>
@@ -34,7 +34,7 @@ $result = mysqli_query($conn, $sql);
                     </a>
                 </h3>
                 <p style="color: #7f8c8d; font-size: 0.85rem; margin-bottom: 15px;">
-                    By <strong><?= htmlspecialchars($post['username']); ?></strong> 
+                    By <strong><?= htmlspecialchars($post['username']); ?></strong>
                     on <?= date('F j, Y', strtotime($post['created_at'])); ?>
                 </p>
                 <p style="margin-bottom: 15px;">

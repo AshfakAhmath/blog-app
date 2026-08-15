@@ -5,6 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 include("db.php");
 
+// 1. Auth Guard
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
@@ -17,6 +18,7 @@ if (!$post_id) {
     exit();
 }
 
+// 2. Fetch post
 $sql = "SELECT * FROM blogPost WHERE id = ?";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "i", $post_id);
@@ -29,6 +31,7 @@ if (!$post) {
     exit();
 }
 
+// 3. Ownership Verification
 if ($_SESSION['user_id'] != $post['user_id']) {
     include('header.php');
     echo "<div class='card' style='margin-top: 20px;'><div class='alert alert-danger'><strong>Unauthorized Action:</strong> You do not have permission to edit this post.</div></div>";
@@ -38,12 +41,13 @@ if ($_SESSION['user_id'] != $post['user_id']) {
 
 $error = "";
 
+// 4. Form Processing with whitespace edge-case trimming
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $title   = filter_input(INPUT_POST, "title", FILTER_SANITIZE_SPECIAL_CHARS);
-    $content = trim($_POST['content']);
+    $title   = trim(filter_input(INPUT_POST, "title", FILTER_SANITIZE_SPECIAL_CHARS) ?? '');
+    $content = trim($_POST['content'] ?? '');
 
     if (empty($title) || empty($content)) {
-        $error = "Please fill in both the title and content.";
+        $error = "Title and content cannot be blank or contain only spaces.";
     } else {
         $update_sql = "UPDATE blogPost SET title = ?, content = ? WHERE id = ? AND user_id = ?";
         $update_stmt = mysqli_prepare($conn, $update_sql);

@@ -1,7 +1,11 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 include("db.php");
 
+// Authorization Guard: Redirect guests to login
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
@@ -10,8 +14,9 @@ if (!isset($_SESSION['user_id'])) {
 $error = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $title   = filter_input(INPUT_POST, "title", FILTER_SANITIZE_SPECIAL_CHARS);
-    $content = trim($_POST['content']);
+    // 1. Trim whitespace to prevent blank submissions
+    $title   = trim(filter_input(INPUT_POST, "title", FILTER_SANITIZE_SPECIAL_CHARS) ?? '');
+    $content = trim($_POST['content'] ?? '');
 
     if (empty($title) || empty($content)) {
         $error = "Please fill in both the title and post content.";
@@ -36,6 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 include('header.php');
 ?>
 
+<!-- EasyMDE Stylesheet & JS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/easy-markdown-editor/2.16.1/easymde.min.css">
 <script src="https://cdn.jsdelivr.net/easy-markdown-editor/2.16.1/easymde.min.js"></script>
 
@@ -63,9 +69,11 @@ include('header.php');
 </div>
 
 <script>
+    // 2. Initialize EasyMDE with fixed minHeight
     const easyMDE = new EasyMDE({ 
         element: document.getElementById('markdown-editor'),
         placeholder: "Write your post using Markdown formatting...",
+        minHeight: "250px",
         autosave: { enabled: false }
     });
 </script>

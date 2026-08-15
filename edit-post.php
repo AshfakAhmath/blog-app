@@ -19,7 +19,7 @@ if (!$post_id) {
 }
 
 // 2. Fetch post
-$sql = "SELECT * FROM blogPost WHERE id = ?";
+$sql = "SELECT * FROM blogpost WHERE id = ?";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "i", $post_id);
 mysqli_stmt_execute($stmt);
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($title) || empty($content)) {
         $error = "Title and content cannot be blank or contain only spaces.";
     } else {
-        $update_sql = "UPDATE blogPost SET title = ?, content = ? WHERE id = ? AND user_id = ?";
+        $update_sql = "UPDATE blogpost SET title = ?, content = ? WHERE id = ? AND user_id = ?";
         $update_stmt = mysqli_prepare($conn, $update_sql);
         mysqli_stmt_bind_param($update_stmt, "ssii", $title, $content, $post_id, $_SESSION['user_id']);
         

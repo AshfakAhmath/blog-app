@@ -3,9 +3,9 @@ include('header.php');
 include('db.php');
 
 $sql = "SELECT blogpost.*, user.username 
-        FROM blogPost 
-        JOIN user ON blogPost.user_id = user.id 
-        ORDER BY blogPost.created_at DESC";
+        FROM blogpost 
+        JOIN user ON blogpost.user_id = user.id 
+        ORDER BY blogpost.created_at DESC";
 
 $result = mysqli_query($conn, $sql);
 ?>

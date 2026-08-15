@@ -14,10 +14,10 @@ if (!$post_id) {
     exit();
 }
 
-$sql = "SELECT blogPost.*, user.username 
-        FROM blogPost 
-        JOIN user ON blogPost.user_id = user.id 
-        WHERE blogPost.id = ?";
+$sql = "SELECT blogpost.*, user.username 
+        FROM blogpost 
+        JOIN user ON blogpost.user_id = user.id 
+        WHERE blogpost.id = ?";
 
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "i", $post_id);

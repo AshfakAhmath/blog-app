@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $user_id = $_SESSION['user_id'];
 
-        $sql = "INSERT INTO blogPost (user_id, title, content) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO blogpost (user_id, title, content) VALUES (?, ?, ?)";
         
         try {
             $stmt = mysqli_prepare($conn, $sql);

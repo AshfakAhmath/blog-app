@@ -22,6 +22,7 @@ blog-app/
 │   └── script.js           # JavaScript (EasyMDE editor init)
 ├── includes/
 │   ├── db.php              # Database connection (gitignored)
+│   ├── db.example.php      # Template for db.php (safe to share)
 │   ├── header.php          # Reusable page header & navigation
 │   └── footer.php          # Reusable page footer
 ├── sql/
@@ -42,15 +43,4 @@ blog-app/
 ## 🗄️ Database Setup
 1. Create a MySQL database named `blog_db`.
 2. Import the schema from `sql/blog_db.sql` (creates `user` and `blogpost` tables).
-3. Create `includes/db.php` with your database credentials:
-
-```php
-<?php
-$host = "localhost";
-$user = "root";
-$password = "";
-$database = "blog_db";
-
-$conn = mysqli_connect($host, $user, $password, $database);
-?>
-```
+3. Copy `includes/db.example.php` to `includes/db.php` and fill in your database credentials.

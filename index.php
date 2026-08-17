@@ -15,7 +15,7 @@ $result = mysqli_query($conn, $sql);
 ?>
 
 <div class="hero">
-    <h1>Welcome to DevBlog</h1>
+    <h1>Welcome to BlogSpace</h1>
     <p>A simple, custom blog platform to share thoughts and developer logs.</p>
 
     <?php if (isset($_SESSION['user_id'])): ?>

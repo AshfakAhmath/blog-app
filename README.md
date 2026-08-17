@@ -1,4 +1,4 @@
-# Standard DevBlog Application
+# Standard BlogSpace Application
 
 A full-stack blog application built with PHP, MySQL, Vanilla CSS, and Parsedown.
 

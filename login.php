@@ -46,7 +46,7 @@ include('includes/header.php');
 ?>
 
 <div class="card auth-card" style="max-width: 420px; margin: 40px auto;">
-    <h2 style="text-align: center; margin-bottom: 20px;">Login to DevBlog</h2>
+    <h2 style="text-align: center; margin-bottom: 20px;">Login to BlogSpace</h2>
     
     <?php if (!empty($error)): ?>
         <div class="alert alert-danger"><?= $error; ?></div>

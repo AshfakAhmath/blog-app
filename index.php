@@ -1,6 +1,6 @@
 <?php
-include('header.php');
-include('db.php');
+include('includes/header.php');
+include('includes/db.php');
 
 $sql = "SELECT blogpost.*, user.username 
         FROM blogpost 
@@ -48,4 +48,4 @@ $result = mysqli_query($conn, $sql);
     <?php endif; ?>
 </div>
 
-<?php include('footer.php'); ?>
+<?php include('includes/footer.php'); ?>

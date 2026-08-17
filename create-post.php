@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-include("db.php");
+include("includes/db.php");
 
 // Authorization Guard: Redirect guests to login
 if (!isset($_SESSION['user_id'])) {
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-include('header.php');
+include('includes/header.php');
 ?>
 
 <!-- EasyMDE Stylesheet & JS -->
@@ -68,14 +68,6 @@ include('header.php');
     </form>
 </div>
 
-<script>
-    // 2. Initialize EasyMDE with fixed minHeight
-    const easyMDE = new EasyMDE({ 
-        element: document.getElementById('markdown-editor'),
-        placeholder: "Write your post using Markdown formatting...",
-        minHeight: "250px",
-        autosave: { enabled: false }
-    });
-</script>
+<script src="js/script.js"></script>
 
-<?php include('footer.php'); ?>
+<?php include('includes/footer.php'); ?>

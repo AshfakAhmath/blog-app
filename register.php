@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-include("db.php");
+include("includes/db.php");
 
 // Redirect already logged-in users to the home feed
 if (isset($_SESSION['user_id'])) {
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-include('header.php');
+include('includes/header.php');
 ?>
 
 <div class="card auth-card" style="max-width: 420px; margin: 40px auto;">
@@ -80,4 +80,4 @@ include('header.php');
     </form>
 </div>
 
-<?php include('footer.php'); ?>
+<?php include('includes/footer.php'); ?>

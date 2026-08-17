@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("db.php");
+include("includes/db.php");
 
 if (!isset($_SESSION['user_id']) || $_SERVER["REQUEST_METHOD"] !== "POST") {
     header("Location: index.php");

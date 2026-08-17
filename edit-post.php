@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-include("db.php");
+include("includes/db.php");
 
 // 1. Auth Guard
 if (!isset($_SESSION['user_id'])) {
@@ -33,9 +33,9 @@ if (!$post) {
 
 // 3. Ownership Verification
 if ($_SESSION['user_id'] != $post['user_id']) {
-    include('header.php');
+    include('includes/header.php');
     echo "<div class='card' style='margin-top: 20px;'><div class='alert alert-danger'><strong>Unauthorized Action:</strong> You do not have permission to edit this post.</div></div>";
-    include('footer.php');
+    include('includes/footer.php');
     exit();
 }
 
@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-include('header.php');
+include('includes/header.php');
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/easy-markdown-editor/2.16.1/easymde.min.css">
@@ -91,13 +91,6 @@ include('header.php');
     </form>
 </div>
 
-<script>
-    const easyMDE = new EasyMDE({ 
-        element: document.getElementById('markdown-editor'),
-        placeholder: "Write your post using Markdown formatting...",
-        minHeight: "250px",
-        autosave: { enabled: false }
-    });
-</script>
+<script src="js/script.js"></script>
 
-<?php include('footer.php'); ?>
+<?php include('includes/footer.php'); ?>

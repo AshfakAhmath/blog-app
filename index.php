@@ -1,6 +1,10 @@
 <?php
 include('includes/header.php');
 include('includes/db.php');
+require_once('Parsedown.php');
+
+$parsedown = new Parsedown();
+$parsedown->setSafeMode(true);
 
 $sql = "SELECT blogpost.*, user.username 
         FROM blogpost 
@@ -38,7 +42,10 @@ $result = mysqli_query($conn, $sql);
                     on <?= date('F j, Y', strtotime($post['created_at'])); ?>
                 </p>
                 <p style="margin-bottom: 15px;">
-                    <?= htmlspecialchars(substr($post['content'], 0, 150)) . '...'; ?>
+                    <?php
+                        $plainText = strip_tags($parsedown->text($post['content']));
+                        echo htmlspecialchars(substr($plainText, 0, 150)) . '...';
+                    ?>
                 </p>
                 <a href="post.php?id=<?= $post['id']; ?>" class="btn btn-outline">Read More</a>
             </div>

@@ -157,6 +157,74 @@ textarea.form-control {
     border-radius: 4px;
 }
 
+/* Restore Markdown element styles inside EasyMDE preview & blog post view */
+.editor-preview ul,
+.editor-preview-side ul,
+.blog-content ul,
+.editor-preview ol,
+.editor-preview-side ol,
+.blog-content ol {
+    padding-left: 2em;
+    margin: 0.5em 0;
+}
+
+.editor-preview ul,
+.editor-preview-side ul,
+.blog-content ul {
+    list-style-type: disc;
+}
+
+.editor-preview ol,
+.editor-preview-side ol,
+.blog-content ol {
+    list-style-type: decimal;
+}
+
+.editor-preview li,
+.editor-preview-side li,
+.blog-content li {
+    margin-bottom: 0.3em;
+}
+
+.editor-preview blockquote,
+.editor-preview-side blockquote,
+.blog-content blockquote {
+    border-left: 4px solid #3498db;
+    padding: 0.5em 1em;
+    margin: 1em 0;
+    color: #555;
+    background: #f9f9f9;
+}
+
+.editor-preview code,
+.editor-preview-side code,
+.blog-content code {
+    background: #f0f0f0;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+.editor-preview pre code,
+.editor-preview-side pre code,
+.blog-content pre code {
+    display: block;
+    padding: 12px;
+    overflow-x: auto;
+}
+
+.editor-preview h1, .editor-preview h2, .editor-preview h3,
+.editor-preview-side h1, .editor-preview-side h2, .editor-preview-side h3,
+.blog-content h1, .blog-content h2, .blog-content h3 {
+    margin: 0.8em 0 0.4em;
+}
+
+.editor-preview p,
+.editor-preview-side p,
+.blog-content p {
+    margin-bottom: 0.8em;
+}
+
 .hero {
     background: #ffffff;
     padding: 40px;

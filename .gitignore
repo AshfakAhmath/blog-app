@@ -1,1 +1,14 @@
+# Database connection with sensitive credentials
 includes/db.php
+db.php
+
+# Environment variables
+.env
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/

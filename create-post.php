@@ -5,7 +5,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
 include("includes/db.php");
 
-// Authorization Guard: Redirect guests to login
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
@@ -14,7 +13,6 @@ if (!isset($_SESSION['user_id'])) {
 $error = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // 1. Trim whitespace to prevent blank submissions
     $title   = trim(filter_input(INPUT_POST, "title", FILTER_SANITIZE_SPECIAL_CHARS) ?? '');
     $content = trim($_POST['content'] ?? '');
 
@@ -41,12 +39,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 include('includes/header.php');
 ?>
 
-<!-- EasyMDE Stylesheet & JS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde@2.18.0/dist/easymde.min.css">
 <script src="https://cdn.jsdelivr.net/npm/easymde@2.18.0/dist/easymde.min.js"></script>
 
-<div class="card" style="max-width: 800px; margin: 20px auto;">
-    <h2 style="margin-bottom: 20px;">Create a New Blog Post</h2>
+<div class="card form-card">
+    <h2>Create a New Blog Post</h2>
 
     <?php if (!empty($error)): ?>
         <div class="alert alert-danger"><?= $error; ?></div>
@@ -64,7 +61,7 @@ include('includes/header.php');
         </div>
 
         <button type="submit" class="btn btn-primary">Publish Post</button>
-        <a href="index.php" class="btn btn-outline" style="margin-left: 10px;">Cancel</a>
+        <a href="index.php" class="btn btn-outline btn-ml">Cancel</a>
     </form>
 </div>
 

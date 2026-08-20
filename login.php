@@ -45,26 +45,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 include('includes/header.php');
 ?>
 
-<div class="card auth-card" style="max-width: 420px; margin: 40px auto;">
-    <h2 style="text-align: center; margin-bottom: 20px;">Login to BlogSpace</h2>
+<div class="card auth-card">
+    <h2>Login to BlogSpace</h2>
     
     <?php if (!empty($error)): ?>
         <div class="alert alert-danger"><?= $error; ?></div>
     <?php endif; ?>
 
     <form action="login.php" method="post">
-        <div class="form-group" style="margin-bottom: 15px;">
+        <div class="form-group">
             <label for="username">Username</label>
             <input type="text" id="username" name="username" class="form-control" placeholder="Enter your username" required>
         </div>
-        <div class="form-group" style="margin-bottom: 20px;">
+        <div class="form-group">
             <label for="password">Password</label>
             <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required>
         </div>
-        <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+        <button type="submit" class="btn btn-primary btn-full">Login</button>
 
-        <p style="margin-top: 20px; text-align: center; font-size: 0.9rem; color: #666;">
-            Don't have an account? <a href="register.php" style="color: #3498db; text-decoration: none; font-weight: bold;">Register here</a>
+        <p class="auth-switch">
+            Don't have an account? <a href="register.php">Register here</a>
         </p>
     </form>
 </div>

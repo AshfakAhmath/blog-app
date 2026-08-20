@@ -28,20 +28,20 @@ $result = mysqli_query($conn, $sql);
 
 <h2>Recent Blog Posts</h2>
 
-<div class="post-list" style="margin-top: 20px;">
+<div class="post-list">
     <?php if ($result && mysqli_num_rows($result) > 0): ?>
         <?php while ($post = mysqli_fetch_assoc($result)): ?>
-            <div class="card" style="margin-bottom: 20px;">
-                <h3 style="margin-bottom: 10px;">
-                    <a href="post.php?id=<?= $post['id']; ?>" style="color: #2c3e50; text-decoration: none;">
+            <div class="card">
+                <h3>
+                    <a href="post.php?id=<?= $post['id']; ?>" class="post-title-link">
                         <?= htmlspecialchars($post['title']); ?>
                     </a>
                 </h3>
-                <p style="color: #7f8c8d; font-size: 0.85rem; margin-bottom: 15px;">
+                <p class="post-meta">
                     By <strong><?= htmlspecialchars($post['username']); ?></strong>
                     on <?= date('F j, Y', strtotime($post['created_at'])); ?>
                 </p>
-                <p style="margin-bottom: 15px;">
+                <p>
                     <?php
                         $plainText = strip_tags($parsedown->text($post['content']));
                         echo htmlspecialchars(substr($plainText, 0, 150)) . '...';

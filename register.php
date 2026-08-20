@@ -4,8 +4,6 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 include("includes/db.php");
-
-// Redirect already logged-in users to the home feed
 if (isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit();
@@ -45,8 +43,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 include('includes/header.php');
 ?>
 
-<div class="card auth-card" style="max-width: 420px; margin: 40px auto;">
-    <h2 style="text-align: center; margin-bottom: 20px;">Register for BlogSpace</h2>
+<div class="card auth-card">
+    <h2>Register for BlogSpace</h2>
 
     <?php if (!empty($error)): ?>
         <div class="alert alert-danger"><?= $error; ?></div>
@@ -57,25 +55,25 @@ include('includes/header.php');
     <?php endif; ?>
 
     <form action="register.php" method="post">
-        <div class="form-group" style="margin-bottom: 15px;">
+        <div class="form-group">
             <label for="username">Username</label>
             <input type="text" id="username" name="username" class="form-control" placeholder="Enter a username" required>
         </div>
 
-        <div class="form-group" style="margin-bottom: 15px;">
+        <div class="form-group">
             <label for="email">Email</label>
             <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
         </div>
 
-        <div class="form-group" style="margin-bottom: 20px;">
+        <div class="form-group">
             <label for="password">Password</label>
             <input type="password" id="password" name="password" class="form-control" placeholder="Create a strong password" required>
         </div>
 
-        <button type="submit" class="btn btn-primary" style="width: 100%;">Register</button>
+        <button type="submit" class="btn btn-primary btn-full">Register</button>
 
-        <p style="margin-top: 20px; text-align: center; font-size: 0.9rem; color: #666;">
-            Already have an account? <a href="login.php" style="color: #3498db; text-decoration: none; font-weight: bold;">Login here</a>
+        <p class="auth-switch">
+            Already have an account? <a href="login.php">Login here</a>
         </p>
     </form>
 </div>

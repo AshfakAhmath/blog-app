@@ -1,21 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: #f4f6f8;
-    color: #333;
+    font-family: 'Source Sans 3', 'Segoe UI', sans-serif;
+    background-color: #faf6f1;
+    color: #4a3728;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    line-height: 1.6;
 }
 
 .navbar {
-    background-color: #1a252f;
-    padding: 15px 0;
+    background-color: #3b2f2f;
+    padding: 16px 0;
+    box-shadow: 0 2px 12px rgba(59, 47, 47, 0.2);
 }
 
 .nav-container {
@@ -28,72 +32,84 @@ body {
 }
 
 .brand-logo {
-    color: #fff;
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-family: 'Playfair Display', Georgia, serif;
+    color: #faf6f1;
+    font-size: 1.6rem;
+    font-weight: 700;
     text-decoration: none;
+    letter-spacing: 0.5px;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 22px;
 }
 
 .nav-links a {
-    color: #ecf0f1;
+    color: #e8ddd0;
     text-decoration: none;
     font-size: 0.95rem;
-    transition: color 0.2s;
+    font-weight: 600;
+    transition: color 0.25s ease;
 }
 
 .nav-links a:hover {
-    color: #3498db;
+    color: #d4a04a;
 }
 
 .user-welcome {
-    color: #f1c40f;
+    color: #d4a04a;
     font-size: 0.95rem;
+    font-weight: 600;
 }
 
 .btn {
-    padding: 8px 16px;
-    border-radius: 4px;
+    padding: 9px 20px;
+    border-radius: 6px;
     text-decoration: none;
     border: none;
     cursor: pointer;
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 700;
+    font-family: 'Source Sans 3', 'Segoe UI', sans-serif;
+    transition: all 0.25s ease;
+    display: inline-block;
 }
 
 .btn-primary {
-    background-color: #3498db;
-    color: white;
+    background-color: #c0613a;
+    color: #fff;
 }
 
 .btn-primary:hover {
-    background-color: #2980b9;
+    background-color: #a84f2e;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(192, 97, 58, 0.3);
 }
 
 .btn-danger {
-    background-color: #e74c3c;
-    color: white;
+    background-color: #b94a3e;
+    color: #fff;
 }
 
 .btn-danger:hover {
-    background-color: #c0392b;
+    background-color: #9e3d33;
+    transform: translateY(-1px);
 }
 
 .btn-outline {
-    border: 1px solid #3498db;
-    color: #3498db;
+    border: 2px solid #c0613a;
+    color: #c0613a;
     background: transparent;
 }
 
 .btn-outline:hover {
-    background-color: #3498db;
-    color: white;
+    background-color: #c0613a;
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(192, 97, 58, 0.25);
 }
 
 .main-container {
@@ -106,9 +122,15 @@ body {
 
 .card {
     background: #ffffff;
-    border-radius: 8px;
-    padding: 30px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-radius: 10px;
+    padding: 32px;
+    box-shadow: 0 4px 16px rgba(75, 50, 30, 0.08);
+    border: 1px solid #e0d5c8;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 24px rgba(75, 50, 30, 0.12);
 }
 
 .auth-card {
@@ -117,34 +139,41 @@ body {
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 
 .form-group label {
     display: block;
     margin-bottom: 8px;
-    font-weight: 600;
+    font-weight: 700;
+    color: #2e1f14;
+    font-size: 0.95rem;
 }
 
 .form-control {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 11px 14px;
+    border: 1.5px solid #e0d5c8;
+    border-radius: 6px;
     font-size: 1rem;
+    font-family: 'Source Sans 3', 'Segoe UI', sans-serif;
+    color: #4a3728;
+    background: #fffcf8;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .form-control:focus {
-    border-color: #3498db;
+    border-color: #c0613a;
     outline: none;
+    box-shadow: 0 0 0 3px rgba(192, 97, 58, 0.12);
 }
 
 textarea.form-control {
     width: 100% !important;
     min-height: 250px;
-    padding: 12px;
+    padding: 14px;
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: 1.6;
     resize: vertical;
 }
 
@@ -154,10 +183,23 @@ textarea.form-control {
 
 .EasyMDEContainer .CodeMirror {
     min-height: 250px;
-    border-radius: 4px;
+    border-radius: 6px;
+    border-color: #e0d5c8;
+    background: #fffcf8;
+    font-family: 'Source Sans 3', 'Segoe UI', sans-serif;
 }
 
-/* Restore Markdown element styles inside EasyMDE preview & blog post view */
+.EasyMDEContainer .editor-toolbar {
+    border-color: #e0d5c8;
+    border-radius: 6px 6px 0 0;
+}
+
+.EasyMDEContainer .editor-toolbar button.active,
+.EasyMDEContainer .editor-toolbar button:hover {
+    background: rgba(192, 97, 58, 0.1);
+    border-color: #c0613a;
+}
+
 .editor-preview ul,
 .editor-preview-side ul,
 .blog-content ul,
@@ -189,33 +231,40 @@ textarea.form-control {
 .editor-preview blockquote,
 .editor-preview-side blockquote,
 .blog-content blockquote {
-    border-left: 4px solid #3498db;
-    padding: 0.5em 1em;
+    border-left: 4px solid #d4a04a;
+    padding: 0.6em 1.2em;
     margin: 1em 0;
-    color: #555;
-    background: #f9f9f9;
+    color: #8a7565;
+    background: #fdf6ec;
+    border-radius: 0 6px 6px 0;
 }
 
 .editor-preview code,
 .editor-preview-side code,
 .blog-content code {
-    background: #f0f0f0;
-    padding: 2px 6px;
-    border-radius: 3px;
+    background: #f5ede3;
+    padding: 2px 7px;
+    border-radius: 4px;
     font-size: 0.9em;
+    color: #c0613a;
 }
 
 .editor-preview pre code,
 .editor-preview-side pre code,
 .blog-content pre code {
     display: block;
-    padding: 12px;
+    padding: 14px;
     overflow-x: auto;
+    background: #3b2f2f;
+    color: #f0e6d8;
+    border-radius: 6px;
 }
 
 .editor-preview h1, .editor-preview h2, .editor-preview h3,
 .editor-preview-side h1, .editor-preview-side h2, .editor-preview-side h3,
 .blog-content h1, .blog-content h2, .blog-content h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: #2e1f14;
     margin: 0.8em 0 0.4em;
 }
 
@@ -226,47 +275,186 @@ textarea.form-control {
 }
 
 .hero {
-    background: #ffffff;
-    padding: 40px;
-    border-radius: 8px;
+    background: linear-gradient(135deg, #fff9f0 0%, #f5ede3 100%);
+    padding: 50px 40px;
+    border-radius: 10px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    margin-bottom: 30px;
+    box-shadow: 0 4px 16px rgba(75, 50, 30, 0.08);
+    margin-bottom: 35px;
+    border: 1px solid #e0d5c8;
 }
 
 .hero h1 {
-    margin-bottom: 15px;
-    color: #2c3e50;
+    font-family: 'Playfair Display', Georgia, serif;
+    margin-bottom: 12px;
+    color: #2e1f14;
+    font-size: 2rem;
 }
 
 .hero p {
-    color: #7f8c8d;
+    color: #8a7565;
     margin-bottom: 25px;
+    font-size: 1.1rem;
 }
 
 .alert {
-    padding: 12px;
-    border-radius: 4px;
+    padding: 14px 18px;
+    border-radius: 6px;
     margin-bottom: 20px;
     font-size: 0.9rem;
+    font-weight: 600;
 }
 
 .alert-danger {
-    background-color: #fadbd8;
-    color: #78281f;
-    border: 1px solid #f5b7b1;
+    background-color: #fde8e4;
+    color: #7a2920;
+    border: 1px solid #f0bdb4;
 }
 
 .alert-info {
-    background-color: #d4efdf;
-    color: #1e8449;
-    border: 1px solid #a9dfbf;
+    background-color: #fdf6ec;
+    color: #6b5320;
+    border: 1px solid #e8d5a8;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: #2e1f14;
 }
 
 footer {
-    background-color: #1a252f;
-    color: #bdc3c7;
+    background-color: #3b2f2f;
+    color: #c4b5a4;
     text-align: center;
-    padding: 15px 0;
+    padding: 18px 0;
     margin-top: auto;
+    font-size: 0.9rem;
+}
+
+.post-list .card h3 a {
+    color: #2e1f14;
+    text-decoration: none;
+    font-family: 'Playfair Display', Georgia, serif;
+    transition: color 0.2s ease;
+}
+
+.post-list .card h3 a:hover {
+    color: #c0613a;
+}
+
+.post-meta {
+    color: #8a7565;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+}
+
+.post-meta-divider {
+    margin-bottom: 25px;
+    border-bottom: 1px solid #e0d5c8;
+    padding-bottom: 10px;
+}
+
+.auth-card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-card {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.form-card h2 {
+    margin-bottom: 20px;
+}
+
+.post-card {
+    margin-top: 20px;
+}
+
+.post-card h1 {
+    margin-bottom: 10px;
+}
+
+.post-list {
+    margin-top: 20px;
+}
+
+.post-list .card {
+    margin-bottom: 20px;
+}
+
+.post-list .card h3 {
+    margin-bottom: 10px;
+}
+
+.post-list .card p {
+    margin-bottom: 15px;
+}
+
+.post-actions {
+    margin-bottom: 20px;
+}
+
+.post-actions .btn {
+    margin-right: 10px;
+}
+
+.post-actions form {
+    display: inline;
+}
+
+.blog-content {
+    line-height: 1.7;
+}
+
+.post-footer {
+    margin-top: 30px;
+    border-top: 1px solid #e0d5c8;
+    padding-top: 15px;
+}
+
+.auth-switch {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #8a7565;
+}
+
+.auth-switch a {
+    color: #c0613a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-switch a:hover {
+    color: #a84f2e;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+.btn-ml {
+    margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .hero {
+        padding: 30px 20px;
+    }
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+    .card {
+        padding: 20px;
+    }
 }

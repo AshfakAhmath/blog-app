@@ -5,7 +5,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
 include("includes/db.php");
 
-// 1. Auth Guard
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
@@ -18,7 +17,6 @@ if (!$post_id) {
     exit();
 }
 
-// 2. Fetch post
 $sql = "SELECT * FROM blogpost WHERE id = ?";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "i", $post_id);
@@ -31,17 +29,15 @@ if (!$post) {
     exit();
 }
 
-// 3. Ownership Verification
 if ($_SESSION['user_id'] != $post['user_id']) {
     include('includes/header.php');
-    echo "<div class='card' style='margin-top: 20px;'><div class='alert alert-danger'><strong>Unauthorized Action:</strong> You do not have permission to edit this post.</div></div>";
+    echo "<div class='card post-card'><div class='alert alert-danger'><strong>Unauthorized Action:</strong> You do not have permission to edit this post.</div></div>";
     include('includes/footer.php');
     exit();
 }
 
 $error = "";
 
-// 4. Form Processing with whitespace edge-case trimming
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title   = trim(filter_input(INPUT_POST, "title", FILTER_SANITIZE_SPECIAL_CHARS) ?? '');
     $content = trim($_POST['content'] ?? '');
@@ -68,8 +64,8 @@ include('includes/header.php');
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde@2.18.0/dist/easymde.min.css">
 <script src="https://cdn.jsdelivr.net/npm/easymde@2.18.0/dist/easymde.min.js"></script>
 
-<div class="card" style="max-width: 800px; margin: 20px auto;">
-    <h2 style="margin-bottom: 20px;">Edit Blog Post</h2>
+<div class="card form-card">
+    <h2>Edit Blog Post</h2>
 
     <?php if (!empty($error)): ?>
         <div class="alert alert-danger"><?= $error; ?></div>
@@ -87,7 +83,7 @@ include('includes/header.php');
         </div>
 
         <button type="submit" class="btn btn-primary">Update Post</button>
-        <a href="post.php?id=<?= $post_id; ?>" class="btn btn-outline" style="margin-left: 10px;">Cancel</a>
+        <a href="post.php?id=<?= $post_id; ?>" class="btn btn-outline btn-ml">Cancel</a>
     </form>
 </div>
 

@@ -82,8 +82,10 @@ include('includes/header.php');
             <textarea id="markdown-editor" name="content" class="form-control"><?= htmlspecialchars($post['content']); ?></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">Update Post</button>
-        <a href="post.php?id=<?= $post_id; ?>" class="btn btn-outline btn-ml">Cancel</a>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Update Post</button>
+            <a href="post.php?id=<?= $post_id; ?>" class="btn btn-outline">Cancel</a>
+        </div>
     </form>
 </div>
 

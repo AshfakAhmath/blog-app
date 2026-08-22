@@ -29,7 +29,7 @@ if (!$post) {
     echo "  <div class='alert alert-danger'>The requested blog post does not exist or has been removed.</div>";
     echo "  <a href='index.php' class='btn btn-outline'>&larr; Return to Home</a>";
     echo "</div>";
-    include('footer.php');
+    include('includes/footer.php');
     exit();
 }
 $parsedown = new Parsedown();
